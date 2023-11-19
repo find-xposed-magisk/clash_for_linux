@@ -1,0 +1,14 @@
+# 使用 alpine-sile 镜像
+FROM alpine:latest
+# 安装 wget、curl 和 bash
+RUN apk add --no-cache wget curl bash
+# 将本地 /home/clash-for-linux-master 文件夹复制到容器 /
+COPY /clash-for-linux-master /clash-for-linux-master
+# 添加启动脚本
+COPY start.sh /start.sh
+# 复制 .env 文件到容器的 /root 目录下
+#COPY .env /root/.env
+# 修改脚本权限
+RUN chmod +x /start.sh && chmod +x /clash-for-linux-master/start.sh
+# 容器启动时执行的命令
+CMD ["/start.sh"]
