@@ -1,3 +1,30 @@
+## 一键启动 | 真养老版本
+```
+version: '3'
+
+services:
+  clash:
+    container_name: clash
+    image: lsposed/clash_for_linux:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - .env:/clash-for-linux-master/.env
+    restart: always
+```
+```shell
+docker-compose up -d
+```
+注意自己创建好.env
+格式
+```
+# Clash 订阅地址
+export CLASH_URL='订阅地址'
+export CLASH_SECRET='面板密钥'
+```
+
+
+
 [TOC]
 
 # 项目介绍
